@@ -1,5 +1,6 @@
 package curso.alura.api.controller;
 
+import curso.alura.api.domain.dto.medico.DadosAtualizacaoMedico;
 import curso.alura.api.domain.dto.medico.DadosCadastroMedico;
 import curso.alura.api.domain.dto.medico.DadosListagemMedico;
 import curso.alura.api.domain.jpa.Medico;
@@ -28,6 +29,20 @@ public class MedicoController {
 
     @GetMapping
     public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-        return medicoRepository.findAll(paginacao).map(DadosListagemMedico::new);
+        return medicoRepository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados){
+        var medico = medicoRepository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        var medico = medicoRepository.getReferenceById(id);
+        medico.excluir();
     }
 }
