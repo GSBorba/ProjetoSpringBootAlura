@@ -1,4 +1,4 @@
-package curso.alura.api.infra;
+package curso.alura.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;

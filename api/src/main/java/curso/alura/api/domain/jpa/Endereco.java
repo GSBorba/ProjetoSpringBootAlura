@@ -1,6 +1,6 @@
 package curso.alura.api.domain.jpa;
 
-import curso.alura.api.domain.dto.endereco.DadosEndereco;
+import curso.alura.api.domain.dto.endereco.*;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

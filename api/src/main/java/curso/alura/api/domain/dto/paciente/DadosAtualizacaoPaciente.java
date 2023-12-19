@@ -1,9 +1,9 @@
-package curso.alura.api.domain.dto.medico;
+package curso.alura.api.domain.dto.paciente;
 
 import curso.alura.api.domain.dto.endereco.DadosEndereco;
 import jakarta.validation.constraints.NotNull;
 
-public record DadosAtualizacaoMedico(
+public record DadosAtualizacaoPaciente(
         @NotNull
         Long id,
         String nome,
